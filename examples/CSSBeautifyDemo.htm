@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>CSS Parser Demo</title>
+<script type="text/javascript" src="../dist/uncompressed/skylark-utils-css-all.js"></script>
+<style type="text/css">
+.error { color: red; }
+</style>
+</head>
+<body>
+<h1>CSS Parser Demo</h1>
+<textarea rows="30" cols="140" id="input">
+@charset "UTF-8"; 
+@import url("booya.css") print,screen;
+@import "whatup.css" screen;
+@import "wicked.css";
+@namespace "http://www.w3.org/1999/xhtml";
+@namespace svg "http://www.w3.org/2000/svg";
+@keyframes 'diagonal-slide' {
+from {
+left: 0;
+top: 0;
+}
+
+to {
+left: 100px;
+top: 100px;
+}
+}
+li.inline {
+background: url("something.png");
+display: inline;
+padding-left: 3px;
+padding-right: 7px;
+border-right: 1px dotted #066;
+}
+li.last {
+display: inline;
+padding-left: 3px !important;
+padding-right: 3px;
+border-right: 0px;
+} 
+
+@media print {
+li.inline {
+  color: black;
+}
+}
+
+@page {
+margin: 10%;
+counter-increment: page;
+
+@top-center {
+font-family: sans-serif;
+font-weight: bold;
+font-size: 2em;
+content: counter(page);
+}
+}
+</textarea>
+<br>
+<input type="button" onclick="beautify()" value="beautify">
+<br>
+<textarea rows="30" cols="140" id="output">
+
+</textarea>
+<script type="text/javascript">
+
+function beautify(){
+    try {
+        var result = skylarkjs.css.beautify(document.getElementById("input").value, {
+              'indent_size': 1,
+              'indent_char': '\t',
+              'selector_separator': ' ',
+              'end_with_newline': true,
+        });
+        document.getElementById("output").value = result;
+    } catch (ex){
+        log("Parse error: " + ex.message, "error");
+    }
+}
+
+
+function log(value, level){
+        var output = document.getElementById("output");        
+        output.innerHTML += "<span class=\"" + level + "\">" + value.replace(/ /g, "&nbsp;") + "</span><br>";
+}
+
+
+
+</script>
+</body>
+</html>
