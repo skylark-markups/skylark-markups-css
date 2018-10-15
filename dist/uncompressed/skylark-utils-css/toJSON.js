@@ -45,13 +45,14 @@ define([
 	    	var ordered = order && this._orderd,
 	    		stack = this._stack,
 	    		rule = stack.pop(),
-	    		top = stack[stack.length-1];
-	    	if (langx.isArray(top)){
+	    		top = stack[stack.length-1],
+                values = top.values || top;
+	    	if (langx.isArray(values)){
 	    		var obj = {};
 	    		obj[rule.name] = rule.values;
-	    		top.push(obj);
+	    		values.push(obj);
 	    	} else {
-	    		top[rule.name] = rule.values;
+	    		values[rule.name] = rule.values;
 	    	}
 		},
 
@@ -61,7 +62,7 @@ define([
 			}
 	    	var stack = this._stack,
 	    		top = stack[stack.length-1];
-    		top[name] = value;
+    		top.values[name] = value;
 		},
 
 		"result" : function() {
@@ -147,25 +148,61 @@ define([
 	    
 	    parser.addListener("startpage", function(event){
 	        log("Starting page with ID=" + event.id + " and pseudo=" + event.pseudo);
+            var key = "@page";
+            if (event.pseudo) {
+                key = key + " " + event.pseudo;
+            }
+            sheet.beginBlock({
+                name : key,
+                values :{}
+            });
 	    });
 	    
 	    
 	    parser.addListener("endpage", function(event){
 	        log("Ending page with ID=" + event.id + " and pseudo=" + event.pseudo);
+            sheet.endBlock(false);
 	    });
 
 	    parser.addListener("startpagemargin", function(event){
 	        log("Starting page margin " + event.margin);
+            sheet.beginBlock({
+                name : "@page-margin",
+                values :{}
+            });
 	    });
 	    
 	    
 	    parser.addListener("endpagemargin", function(event){
 	        log("Ending page margin " + event.margin);
+            sheet.endBlock(false);
 	    });
 
+        parser.addListener("starttopcenter", function(event){
+            //log("Starting top center " + event.center);
+            sheet.beginBlock({
+                name : "@top-center",
+                values :{}
+            });
+        });
+        
+        
+        parser.addListener("endtopcenter", function(event){
+            //log("Ending Top Center " + event.center);
+            sheet.endBlock(false);
+        });
 	    
 	    parser.addListener("import", function(event){
 	        log("Importing " + event.uri + " for media types [" + event.media + "]");
+            var key = "@import " + event.uri;
+            if (event.media) {
+                key = key + " " + event.media;
+            }
+            sheet.beginBlock({
+                name : key,
+                values : ""
+            });
+            sheet.endBlock(true);
 	    });
 	    
 	    parser.addListener("startrule", function(event){
