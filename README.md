@@ -1,4 +1,4 @@
-# skylark-utils-css
+# skylark-markups-css
 The skylark css utility library.
 
 ## Dependences
@@ -6,7 +6,6 @@ The skylark css utility library.
 | Project                                                      | Status | Description                           |
 | ------------------------------------------------------------ | ------ | ------------------------------------- |
 | [skylark-langx](https://github.com/skylarklangx/skylark-langx) |        | Javascript language extension library |
-| [skylark-utils](https://github.com/skylarkutils/skylark-utils) |        | An Universal HTML5 Javascript Library |
 | [skylark-utils-dom](https://github.com/skylarkutils/skylark-utils-dom) |        | An Universal DOM Utility Library      |
 
 ## Different builds
@@ -15,10 +14,10 @@ builds are in the directory dist.
 
 |                      | build                                 | Description              |
 | -------------------- | ------------------------------------- | ------------------------ |
-| full                 | skylark-utils-css-all.js              | included dependences     |
-| only                 | skylark-utils-css.js                  | not included dependences |
-| full （development） | uncompressed/skylark-utils-css-all.js | included dependences     |
-| only （development） | uncompressed/skylark-utils-css.js     | not included dependences |
+| full                 | skylark-markups-css-all.js              | included dependences     |
+| only                 | skylark-markups-css.js                  | not included dependences |
+| full （development） | uncompressed/skylark-markups-css-all.js | included dependences     |
+| only （development） | uncompressed/skylark-markups-css.js     | not included dependences |
 
 Please use the "full" version when using this library alone, and use the "only" version when using other skylark libraries.
 
@@ -26,9 +25,9 @@ Please use the "full" version when using this library alone, and use the "only" 
 
 You can get the latest version in many different ways:
 
-- Downloading [a ZIP file from master](https://github.com/skylarkutils/skylark-utils-css/archive/master.zip)
-- Cloning using Git: `git clone https://github.com/skylarkutils/skylark-utils-css.git`
-- Installing via NPM: `npm install https://github.com/skylarkutils/skylark-utils-css.git#master --save`
+- Downloading [a ZIP file from master](https://github.com/skylark-markups/skylark-markups-css/archive/master.zip)
+- Cloning using Git: `git clone https://github.com/skylark-markups/skylark-markups-css.git`
+- Installing via NPM: `npm install https://github.com/skylark-markups/skylark-markups-css.git#master --save`
 
 ## Building 
 

@@ -1,5 +1,5 @@
 /**
- * skylark-utils-css - The skylark css utility library.
+ * skylark-markups-css - The skylark css utility library.
  * @author Hudaokeji Co.,Ltd
  * @version v0.9.0-beta
  * @link www.skylarkjs.org
@@ -37,11 +37,16 @@
                 deps: deps.map(function(dep){
                   return absolute(dep,id);
                 }),
+                resolved: false,
                 exports: null
             };
             require(id);
         } else {
-            map[id] = factory;
+            map[id] = {
+                factory : null,
+                resolved : true,
+                exports : factory
+            };
         }
     };
     require = globals.require = function(id) {
@@ -49,14 +54,15 @@
             throw new Error('Module ' + id + ' has not been defined');
         }
         var module = map[id];
-        if (!module.exports) {
+        if (!module.resolved) {
             var args = [];
 
             module.deps.forEach(function(dep){
                 args.push(require(dep));
             })
 
-            module.exports = module.factory.apply(window, args);
+            module.exports = module.factory.apply(globals, args) || null;
+            module.resolved = true;
         }
         return module.exports;
     };
@@ -72,7 +78,7 @@
     var skylarkjs = require("skylark-langx/skylark");
 
     if (isCmd) {
-      exports = skylarkjs;
+      module.exports = skylarkjs;
     } else {
       globals.skylarkjs  = skylarkjs;
     }
@@ -80,12 +86,11 @@
 
 })(function(define,require) {
 
-define('skylark-utils-css/css',[
-    "skylark-utils/skylark",
-    "skylark-utils/css"
-], function(skylark, css) {
+define('skylark-markups-css/css',[
+    "skylark-langx/skylark"
+], function(skylark) {
 	
-	return css;
+	return skylark.attach("markups.css",{});
 });
 /*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
@@ -147,7 +152,7 @@ define('skylark-utils-css/css',[
 // http://www.w3.org/TR/CSS21/syndata.html#tokenization
 // http://www.w3.org/TR/css3-syntax/
 
-define('skylark-utils-css/primitives/beautify-css',[],function() {
+define('skylark-markups-css/primitives/beautify-css',[],function() {
     function css_beautify(source_text, options) {
         options = options || {};
         var indentSize = options.indent_size || 4;
@@ -510,7 +515,7 @@ define('skylark-utils-css/primitives/beautify-css',[],function() {
     };
 });
 
-define('skylark-utils-css/beautify',[
+define('skylark-markups-css/beautify',[
     "./css",
     "./primitives/beautify-css"
 ], function(css, beautifyCss) {
@@ -542,7 +547,7 @@ define('skylark-utils-css/beautify',[
     */
     /* Version v0.2.3, Build time: 19-June-2013 11:16:15 */
 
-define('skylark-utils-css/primitives/parser-lib',[],function(){
+define('skylark-markups-css/primitives/parser-lib',[],function(){
     var parserlib = {};
 
 
@@ -6905,7 +6910,7 @@ THE SOFTWARE.
 
 */
 /* Build: v0.10.0 15-August-2013 01:07:22 */
-define('skylark-utils-css/primitives/csslint',['./parser-lib'],function(parserlib){
+define('skylark-markups-css/primitives/csslint',['./parser-lib'],function(parserlib){
             //create a copy of the array and use that so listeners can't chane
  
 
@@ -9737,14 +9742,14 @@ define('skylark-utils-css/primitives/csslint',['./parser-lib'],function(parserli
 
     return CSSLint;
 });
-define('skylark-utils-css/Lint',[
+define('skylark-markups-css/Lint',[
     "./css",
     "./primitives/csslint"
 ], function(css, CSSLint) {
 
 	return css.Lint = CSSLint;
 });
-define('skylark-utils-css/Parser',[
+define('skylark-markups-css/Parser',[
 	"skylark-langx/langx",
     "./css",
     "./primitives/parser-lib"
@@ -9754,7 +9759,7 @@ define('skylark-utils-css/Parser',[
 
 	return Parser ;
 });
-define('skylark-utils-css/toJSON',[
+define('skylark-markups-css/toJSON',[
     "skylark-langx/langx",
     "./css",
     "./Parser"
@@ -10013,7 +10018,7 @@ define('skylark-utils-css/toJSON',[
 
 	return css.toJSON = toJSON;
 });
-define('skylark-utils-css/main',[
+define('skylark-markups-css/main',[
     "./css",
     "./beautify",
     "./Lint",
@@ -10023,7 +10028,8 @@ define('skylark-utils-css/main',[
 
 	return css;
 });
-define('skylark-utils-css', ['skylark-utils-css/main'], function (main) { return main; });
+define('skylark-markups-css', ['skylark-markups-css/main'], function (main) { return main; });
 
 
 },this);
+//# sourceMappingURL=sourcemaps/skylark-markups-css.js.map

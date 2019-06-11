@@ -1,5 +1,5 @@
 /**
- * skylark-utils-css - The skylark css utility library.
+ * skylark-markups-css - The skylark css utility library.
  * @author Hudaokeji Co.,Ltd
  * @version v0.9.0-beta
  * @link www.skylarkjs.org

@@ -1,0 +1,1 @@
+{"version":3,"sources":["Lint.js"],"names":["define","css","CSSLint","Lint"],"mappings":";;;;;;;AAAAA,QACI,QACA,wBACD,SAASC,EAAKC,GAEhB,OAAOD,EAAIE,KAAOD","file":"../Lint.js","sourcesContent":["define([\r\n    \"./css\",\r\n    \"./primitives/csslint\"\r\n], function(css, CSSLint) {\r\n\r\n\treturn css.Lint = CSSLint;\r\n});"]}
