@@ -1,4 +1,4 @@
-# skylark-markups-css
+# skylark-parsers-css
 The skylark css utility library.
 
 ## Dependences
@@ -14,10 +14,10 @@ builds are in the directory dist.
 
 |                      | build                                 | Description              |
 | -------------------- | ------------------------------------- | ------------------------ |
-| full                 | skylark-markups-css-all.js              | included dependences     |
-| only                 | skylark-markups-css.js                  | not included dependences |
-| full （development） | uncompressed/skylark-markups-css-all.js | included dependences     |
-| only （development） | uncompressed/skylark-markups-css.js     | not included dependences |
+| full                 | skylark-parsers-css-all.js              | included dependences     |
+| only                 | skylark-parsers-css.js                  | not included dependences |
+| full （development） | uncompressed/skylark-parsers-css-all.js | included dependences     |
+| only （development） | uncompressed/skylark-parsers-css.js     | not included dependences |
 
 Please use the "full" version when using this library alone, and use the "only" version when using other skylark libraries.
 
@@ -25,9 +25,9 @@ Please use the "full" version when using this library alone, and use the "only" 
 
 You can get the latest version in many different ways:
 
-- Downloading [a ZIP file from master](https://github.com/skylark-markups/skylark-markups-css/archive/master.zip)
-- Cloning using Git: `git clone https://github.com/skylark-markups/skylark-markups-css.git`
-- Installing via NPM: `npm install https://github.com/skylark-markups/skylark-markups-css.git#master --save`
+- Downloading [a ZIP file from master](https://github.com/skylark-parsers/skylark-parsers-css/archive/master.zip)
+- Cloning using Git: `git clone https://github.com/skylark-parsers/skylark-parsers-css.git`
+- Installing via NPM: `npm install https://github.com/skylark-parsers/skylark-parsers-css.git#master --save`
 
 ## Building 
 
