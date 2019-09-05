@@ -1,5 +1,5 @@
 {
-  "name": "skylark-markups-css",
+  "name": "skylark-parsers-css",
   "version": "0.9.0-beta",
   "description": "The skylark css utility library.",
   "main": "-",
@@ -10,7 +10,7 @@
   "homepage": "www.skylarkjs.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skylark-markups/skylark-markups-css.git"
+    "url": "git+https://github.com/skylark-parsers/skylark-parsers-css.git"
   },
   "keywords": [
     "skylark",
