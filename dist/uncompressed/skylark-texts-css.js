@@ -1,5 +1,5 @@
 /**
- * skylark-parsers-css - The skylark css utility library.
+ * skylark-texts-css - The skylark css utility library.
  * @author Hudaokeji Co.,Ltd
  * @version v0.9.0
  * @link www.skylarkjs.org
@@ -75,7 +75,7 @@
   factory(define,require);
 
   if (!isAmd) {
-    var skylarkjs = require("skylark-langx/skylark");
+    var skylarkjs = require("skylark-langx-ns");
 
     if (isCmd) {
       module.exports = skylarkjs;
@@ -86,7 +86,7 @@
 
 })(function(define,require) {
 
-define('skylark-parsers-css/css',[
+define('skylark-texts-css/css',[
     "skylark-langx/skylark"
 ], function(skylark) {
 	
@@ -152,7 +152,7 @@ define('skylark-parsers-css/css',[
 // http://www.w3.org/TR/CSS21/syndata.html#tokenization
 // http://www.w3.org/TR/css3-syntax/
 
-define('skylark-parsers-css/primitives/beautify-css',[],function() {
+define('skylark-texts-css/primitives/beautify-css',[],function() {
     function css_beautify(source_text, options) {
         options = options || {};
         var indentSize = options.indent_size || 4;
@@ -515,7 +515,7 @@ define('skylark-parsers-css/primitives/beautify-css',[],function() {
     };
 });
 
-define('skylark-parsers-css/beautify',[
+define('skylark-texts-css/beautify',[
     "./css",
     "./primitives/beautify-css"
 ], function(css, beautifyCss) {
@@ -547,7 +547,7 @@ define('skylark-parsers-css/beautify',[
     */
     /* Version v0.2.3, Build time: 19-June-2013 11:16:15 */
 
-define('skylark-parsers-css/primitives/parser-lib',[],function(){
+define('skylark-texts-css/primitives/parser-lib',[],function(){
     var parserlib = {};
 
 
@@ -6910,7 +6910,7 @@ THE SOFTWARE.
 
 */
 /* Build: v0.10.0 15-August-2013 01:07:22 */
-define('skylark-parsers-css/primitives/csslint',['./parser-lib'],function(parserlib){
+define('skylark-texts-css/primitives/csslint',['./parser-lib'],function(parserlib){
             //create a copy of the array and use that so listeners can't chane
  
 
@@ -9742,14 +9742,14 @@ define('skylark-parsers-css/primitives/csslint',['./parser-lib'],function(parser
 
     return CSSLint;
 });
-define('skylark-parsers-css/Lint',[
+define('skylark-texts-css/Lint',[
     "./css",
     "./primitives/csslint"
 ], function(css, CSSLint) {
 
 	return css.Lint = CSSLint;
 });
-define('skylark-parsers-css/Parser',[
+define('skylark-texts-css/Parser',[
 	"skylark-langx/langx",
     "./css",
     "./primitives/parser-lib"
@@ -9759,7 +9759,7 @@ define('skylark-parsers-css/Parser',[
 
 	return Parser ;
 });
-define('skylark-parsers-css/toJSON',[
+define('skylark-texts-css/toJSON',[
     "skylark-langx/langx",
     "./css",
     "./Parser"
@@ -10018,7 +10018,7 @@ define('skylark-parsers-css/toJSON',[
 
 	return css.toJSON = toJSON;
 });
-define('skylark-parsers-css/main',[
+define('skylark-texts-css/main',[
     "./css",
     "./beautify",
     "./Lint",
@@ -10028,8 +10028,8 @@ define('skylark-parsers-css/main',[
 
 	return css;
 });
-define('skylark-parsers-css', ['skylark-parsers-css/main'], function (main) { return main; });
+define('skylark-texts-css', ['skylark-texts-css/main'], function (main) { return main; });
 
 
 },this);
-//# sourceMappingURL=sourcemaps/skylark-parsers-css.js.map
+//# sourceMappingURL=sourcemaps/skylark-texts-css.js.map
